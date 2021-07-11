@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rust-deployment
+  labels:
+    app: rust-testapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rust-testapi
+  template:
+    metadata:
+      labels:
+        app: rust-testapi
+    spec:
+      containers:
+      - name: rust-testapi
+        image: '913913497794.dkr.ecr.us-east-1.amazonaws.com/rust-testapi:latest'
+        ports:
+        - containerPort: 8080
